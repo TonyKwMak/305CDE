@@ -13,14 +13,16 @@ function process() {
     var email = document.getElementById('email');
     var fullname = document.getElementById('fullname');
     var comments = document.getElementById('comments');
-    
     // Validate the email address:
-//    if(fullname.length<3 || fullname.length>100){
-//        alert('Please enter a name between 3 to 100 characters!');
-//    }
-//    if(fullname.indexOf(' ') < 2){
-//        alert('Please enter a real name!');
-//    }
+    if(fullname.value.length<3 || fullname.value.length>100){
+        okay = false;
+        alert('Please enter a name between 3 to 100 characters!');
+    }
+    var res = fullname.value.match(/[a-zA-Z]\s[a-zA-Z]/g).length;
+    if(res < 2){
+        alert('Please enter a real name!');
+        okay = false;
+    }
     
     // Validate the email address:
     if (!email || !email.value 
@@ -44,7 +46,6 @@ function process() {
         // Trim the text to that spot:
         var limitedText = originalText.slice(0, lastSpace);
         comments.value = limitedText;
-        okay = true;
 
         alert('Comment was trimmed under ' + maxLength + ' characters');
     }
