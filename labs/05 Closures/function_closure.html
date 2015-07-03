@@ -35,17 +35,36 @@ window.onload = function() {
 	var message = "You clicked me ";
 	var div = document.getElementById("message");
 
-	var button = document.getElementById("clickme");
-	button.onclick = function() {
+	var buttonAdd = document.getElementById("clickmeAdd");
+    var buttonReset = document.getElementById("clickmeReset");
+    var buttonMinus = document.getElementById("clickmeMinus");
+    
+    function update() {
+        div.innerHTML = message + count + " times!";
+    }
+    
+	buttonAdd.onclick = function() {
 		count++;
-		div.innerHTML = message + count + " times!";
+        update();
+	};
+    
+    buttonReset.onclick = function() {
+		count = 0;
+        update();
+	};
+    
+    buttonMinus.onclick = function() {
+		count--;
+        update();
 	};
 };
 
 </script> 
 </head> 
 <body>
-	<button id="clickme">Click me!</button>
+	<button id="clickmeAdd">+</button>
+    <button id="clickmeReset">0</button>
+    <button id="clickmeMinus">-</button>
 	<div id="message"></div>
 </body>
 </html>
